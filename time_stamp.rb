@@ -8,7 +8,7 @@ class TimeStamp
     "second" => "%S"
   }
 
-  def initialize params
+  def initialize(params)
     @params = params.split(',')
   end
 

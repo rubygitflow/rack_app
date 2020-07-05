@@ -6,7 +6,11 @@ class App
 
     if valid_path?
       timestamp = TimeStamp.new(request.params["format"])
-      response(timestamp)
+      if timestamp.has_invalid?
+        rack_response(400, "Unknown time format [#{timestamp.invalid}]")
+      else
+        rack_response(200, timestamp.format)
+      end
     else
       rack_response(404, "Page not found")
     end
@@ -14,20 +18,12 @@ class App
 
   private
 
-  def response timestamp
-    if timestamp.has_invalid?
-      rack_response(400, "Unknown time format [#{timestamp.invalid}]")
-    else
-      rack_response(200, timestamp.format)
-    end
-  end
-
-  def rack_response status, body
-    [
+  def rack_response(status, body)
+    Rack::Response.new(
       status,
       {"Content-Type" => "text/html"},
       [body]
-    ]
+    ).finish
   end
 
   def request
