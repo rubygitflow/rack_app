@@ -22,12 +22,12 @@ Send a request to our rack_up
 ```
 GET "http://127.0.0.1:9292/time?format=year,month,day,hour,minute,second"
 ```
-или
+or
 ```
 curl --url "http://127.0.0.1:9292/time?format=year,month,day,hour,minute,second" -i
 ```
 
 # Run test
 ```
-rspec spec/requests/test_server_request_spec.rb --format documentation
+rspec spec/requests/ --format documentation
 ```
