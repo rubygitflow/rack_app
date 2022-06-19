@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TimeStamp
   FORMATS = {
     "year" => "%Y",
@@ -9,11 +11,11 @@ class TimeStamp
   }
 
   def initialize(params)
-    @params = params.split(',')
+    @params = params&.split(',') || []
   end
 
   def has_invalid?
-    invalid_params.any?
+    invalid_params.any? || @params.empty?
   end
 
   def invalid
