@@ -1,7 +1,7 @@
 # rack_app
 This is an example of a Rack application and middleware 
 
-# Run rack_app
+### Run rack_app
 Run rack_app on the default server
 ```
 $ rackup
@@ -27,7 +27,7 @@ or
 curl --url "http://127.0.0.1:9292/time?format=year,month,day,hour,minute,second" -i
 ```
 
-# Run test
+### Run tests
 ```
 rspec spec/requests/ --format documentation
 ```
